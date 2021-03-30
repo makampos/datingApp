@@ -4,6 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { User } from '../_models/User';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +25,19 @@ export class AccountService {
           this.currentUserSource.next(user);
         }
       })
+    )
+  }
+
+  register(model: any){
+    return this.http.post(this.baseUrl + 'account/register', model).pipe(
+      map((user: User) => {
+        if(user) {
+          localStorage.setItem('user',JSON.stringify(user));
+          this.currentUserSource.next(user);
+        }
+        //optional
+        return user;
+      })      
     )
   }
 
