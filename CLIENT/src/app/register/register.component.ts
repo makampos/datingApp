@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AccountService } from '../_services/account.service';
 
 
 @Component({
@@ -7,19 +8,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  // Receive a data from other component
-  @Input() usersFromHomeComponent: any;
-
   // Push data for others components
   @Output() cancelRegister = new EventEmitter();
-  Model: any = {};
-  constructor() { }
+  model: any = {};
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
   }
 
   register(){
-    console.log(this.Model);
+    this.accountService.register(this.model).subscribe(response => {
+      console.log(response);
+      this.cancel()
+    },error => { 
+      console.log(error)
+    });
   }
 
   cancel(){    
