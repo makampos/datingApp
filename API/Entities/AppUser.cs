@@ -23,10 +23,12 @@ namespace API.Entities
 
         public ICollection<Photo> Photos { get; set; }
 
-        public int GetAge()
-        {
-            return DateOfBirth.CalculateAge();
-        }
+        
+        // This method caused a problem with ProjetTo()
+        // public int GetAge()
+        // {
+        //     return DateOfBirth.CalculateAge();
+        // }
 
     }
 }
