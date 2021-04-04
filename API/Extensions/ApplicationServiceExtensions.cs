@@ -17,7 +17,7 @@ namespace API.Extensions
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options => 
             {
-                options.UseMySql(config.GetConnectionString("DefaultConnection"));
+                options.UseMySql(config.GetConnectionString("DefaultConnection")).EnableSensitiveDataLogging();
             });
 
             return services;
