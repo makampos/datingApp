@@ -1,0 +1,17 @@
+.container {
+    margin-top: 150px;
+}
+
+.card {
+    padding: 25px;
+}
+
+.card-body {
+    padding: 10px 10px 15px;
+    background-color: #ffff;
+    border-top: none;
+}
+
+.card-footer {
+    width: 100%;
+}
